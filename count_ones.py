@@ -28,57 +28,57 @@ def run_count_ones_experiments():
     outfile = OUTPUT_DIRECTORY + '/count_ones_{}_log.csv'
 
     # Randomized Hill Climber
-    # filename = outfile.format('rhc')
-    # with open(filename, 'w') as f:
-    #     f.write('iteration,fitness,time\n')
-    # for it in range(0, max_iter, 10):
-    #     rhc = RandomizedHillClimbing(hcp)
-    #     fit = FixedIterationTrainer(rhc, it)
-    #     start_time = time.clock()
-    #     fit.train()
-    #     elapsed_time = time.clock() - start_time
-    #     # fevals = ef.fevals
-    #     score = ef.value(rhc.getOptimal())
-    #     data = '{},{},{}\n'.format(it, score, elapsed_time)
-    #     print(data)
-    #     with open(filename, 'a') as f:
-    #         f.write(data)
+    filename = outfile.format('rhc')
+    with open(filename, 'w') as f:
+        f.write('iteration,fitness,time\n')
+    for it in range(0, max_iter, 10):
+        rhc = RandomizedHillClimbing(hcp)
+        fit = FixedIterationTrainer(rhc, it)
+        start_time = time.clock()
+        fit.train()
+        elapsed_time = time.clock() - start_time
+        # fevals = ef.fevals
+        score = ef.value(rhc.getOptimal())
+        data = '{},{},{}\n'.format(it, score, elapsed_time)
+        print(data)
+        with open(filename, 'a') as f:
+            f.write(data)
 
     # Simulated Annealing
-    # filename = outfile.format('sa')
-    # with open(filename, 'w') as f:
-    #     f.write('iteration,cooling_value,fitness,time\n')
-    # for cooling_value in (.19, .38, .76, .95):
-    #     for it in range(0, max_iter, 10):
-    #         sa = SimulatedAnnealing(100, cooling_value, hcp)
-    #         fit = FixedIterationTrainer(sa, it)
-    #         start_time = time.clock()
-    #         fit.train()
-    #         elapsed_time = time.clock() - start_time
-    #         # fevals = ef.fevals
-    #         score = ef.value(sa.getOptimal())
-    #         data = '{},{},{},{}\n'.format(it, cooling_value, score, elapsed_time)
-    #         print(data)
-    #         with open(filename, 'a') as f:
-    #             f.write(data)
+    filename = outfile.format('sa')
+    with open(filename, 'w') as f:
+        f.write('iteration,cooling_value,fitness,time\n')
+    for cooling_value in (.19, .38, .76, .95):
+        for it in range(0, max_iter, 10):
+            sa = SimulatedAnnealing(100, cooling_value, hcp)
+            fit = FixedIterationTrainer(sa, it)
+            start_time = time.clock()
+            fit.train()
+            elapsed_time = time.clock() - start_time
+            # fevals = ef.fevals
+            score = ef.value(sa.getOptimal())
+            data = '{},{},{},{}\n'.format(it, cooling_value, score, elapsed_time)
+            print(data)
+            with open(filename, 'a') as f:
+                f.write(data)
 
     # Genetic Algorithm
-    # filename = outfile.format('ga')
-    # with open(filename, 'w') as f:
-    #     f.write('iteration,population_size,to_mate,to_mutate,fitness,time\n')
-    # for population_size, to_mate, to_mutate in itertools.product([20], [4, 8, 16, 20], [0, 2, 4, 6]):
-    #     for it in range(0, max_iter, 10):
-    #         ga = StandardGeneticAlgorithm(population_size, to_mate, to_mutate, gap)
-    #         fit = FixedIterationTrainer(ga, it)
-    #         start_time = time.clock()
-    #         fit.train()
-    #         elapsed_time = time.clock() - start_time
-    #         # fevals = ef.fevals
-    #         score = ef.value(ga.getOptimal())
-    #         data = '{},{},{},{},{},{}\n'.format(it, population_size, to_mate, to_mutate, score, elapsed_time)
-    #         print(data)
-    #         with open(filename, 'a') as f:
-    #             f.write(data)
+    filename = outfile.format('ga')
+    with open(filename, 'w') as f:
+        f.write('iteration,population_size,to_mate,to_mutate,fitness,time\n')
+    for population_size, to_mate, to_mutate in itertools.product([20], [4, 8, 16, 20], [0, 2, 4, 6]):
+        for it in range(0, max_iter, 10):
+            ga = StandardGeneticAlgorithm(population_size, to_mate, to_mutate, gap)
+            fit = FixedIterationTrainer(ga, it)
+            start_time = time.clock()
+            fit.train()
+            elapsed_time = time.clock() - start_time
+            # fevals = ef.fevals
+            score = ef.value(ga.getOptimal())
+            data = '{},{},{},{},{},{}\n'.format(it, population_size, to_mate, to_mutate, score, elapsed_time)
+            print(data)
+            with open(filename, 'a') as f:
+                f.write(data)
 
     # MIMIC
     filename = outfile.format('mm')
